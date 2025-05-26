@@ -12,25 +12,28 @@ minimum - just check if current element is smaller than the previous elem's min.
 class Stack:
     def __init__(self):
         self.stack = []
+        self.minstack = []
 
     def push(self, elem):
-        # check min
-        if not self.stack:
-            self.stack.append((elem, elem))
-        else:
-            if self.stack[-1][1] > elem:
-                self.stack.append((elem, elem))
-            else:
-                self.stack.append((elem, self.stack[-1][1]))
+        # push into minstack if elem is <= top of minstack.
+        if not self.minstack or (self.minstack and elem <= self.minstack[-1]):
+            self.minstack.append(elem)
+
+        self.stack.append(elem)
+
+
 
     def pop(self):
         assert self.stack
-        return self.stack.pop()[0]
+        if self.stack[-1] == self.minstack[-1]:
+            self.minstack.pop()
+        
+        return self.stack.pop()
 
     def min(self):
         assert self.stack
 
-        return self.stack[-1][1]
+        return self.minstack[-1]
 
 # test cases.
 ## 1
@@ -49,4 +52,48 @@ stack.push(1)
 stack.pop()
 assert stack.pop() == 2
 
-    
+## 3 - try to pop from empty stack.
+stack = Stack()
+try:
+    stack.pop()
+except AssertionError:
+    pass
+
+
+## 4
+stack = Stack()
+stack.push(2)
+stack.push(1)
+stack.push(1)
+stack.push(1)
+stack.push(1)
+stack.push(1)
+stack.pop()
+stack.pop()
+stack.pop()
+stack.pop()
+stack.pop()
+assert stack.min() == 2
+
+## 4
+stack = Stack()
+stack.push(1)
+stack.push(1)
+stack.push(1)
+stack.push(1)
+stack.push(1)
+stack.push(1)
+stack.pop()
+stack.pop()
+stack.pop()
+stack.pop()
+stack.pop()
+assert stack.min() == 1
+
+
+## 5 - try to min from empty stack.
+stack = Stack()
+try:
+    stack.min()
+except AssertionError:
+    pass
