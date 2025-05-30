@@ -35,20 +35,36 @@ def groupAnagrams(strArr):
 
 
     # assuming any characters.
+    # overallDict = collections.defaultdict(list)
+    # for word in strArr: # outer loop: O(n)
+    #     chars = {}
+    #     for char in word: # inner loop: O(k)
+    #         if char not in chars:
+    #             chars[char] = 1
+    #         else:
+    #             chars[char] += 1
+        
+    #     tuple_chars = []
+    #     for k, v in chars.items(): # inner loop: O(1)
+    #         tuple_chars.append((k,v))
+        
+    #     overallDict[tuple(sorted(tuple_chars))].append(word) 
+    
+    # res = []
+    # for v in overallDict.values():
+    #     res.extend(v)
+
+    # return res
+
+    # alternative approach - sort chars and use as keys in a dictionary.
+    def sortChars(word):
+        return "".join(sorted(word))
+    
     overallDict = collections.defaultdict(list)
-    for word in strArr: # outer loop: O(n)
-        chars = {}
-        for char in word: # inner loop: O(k)
-            if char not in chars:
-                chars[char] = 1
-            else:
-                chars[char] += 1
-        
-        tuple_chars = []
-        for k, v in chars.items(): # inner loop: O(1)
-            tuple_chars.append((k,v))
-        
-        overallDict[tuple(sorted(tuple_chars))].append(word) 
+
+    for word in strArr:
+        wordSorted = sortChars(word)
+        overallDict[wordSorted].append(word)
     
     res = []
     for v in overallDict.values():
