@@ -58,12 +58,12 @@ def groupAnagrams(strArr):
 
     # alternative approach - sort chars and use as keys in a dictionary.
     def sortChars(word):
-        return "".join(sorted(word))
+        return "".join(sorted(word)) # O(k log k)
     
     overallDict = collections.defaultdict(list)
 
-    for word in strArr:
-        wordSorted = sortChars(word)
+    for word in strArr: # O(n)
+        wordSorted = sortChars(word) # O(k log k)
         overallDict[wordSorted].append(word)
     
     res = []
