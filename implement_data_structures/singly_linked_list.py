@@ -9,12 +9,9 @@ class Node:
 
 class SinglyLinkedList:
     def __init__(self):
-
         self.head = None
 
-
     def search(self, x: Node) -> Node:
-
         ptr = self.head
         while ptr:
             if ptr.val == x.val:
@@ -26,7 +23,7 @@ class SinglyLinkedList:
     def insert(self,x: Node) -> None:
 
         if not x:
-            print(f"Please insert a Node() object.")
+            print("Please insert a Node() object.")
             return
         # insert to front of list.
         ptr = x
