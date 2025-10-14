@@ -100,8 +100,6 @@ class DoubleLLQueue:
             print(curr.val)
             curr = curr.next
 
-
-
 # driver code.
 if __name__ == "__main__":
     # run queue implemented with single linked list.
