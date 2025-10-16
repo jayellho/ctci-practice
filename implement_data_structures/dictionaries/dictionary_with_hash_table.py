@@ -1,4 +1,4 @@
-# Implementation of dictionary with hash table.
+# TODO: Implementation of dictionary with hash table.
 from enum import Enum
 
 class CollisionTypes(Enum):
