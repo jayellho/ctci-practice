@@ -7,7 +7,7 @@
    3. Large such that we may worry about running out of memory or virtual memory performance?
 2. Relative frequencies of insert, delete, and search operations?
    1. Static data structures (e.g. sorted arrays): good enough where no modifications after first constructed.
-   2. Semi-dynamic data structures (support insrtion but not deletion): can have much simpler implementations than fully dynamic ones.
+   2. Semi-dynamic data structures (support insertion but not deletion): can have much simpler implementations than fully dynamic ones.
 3. Access patterns of keys - uniform and random?
    1. Search queries - tend to have a skewed access distribution
    2. Queries also tend to have clustered access distribution
